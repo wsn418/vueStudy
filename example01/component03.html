@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> component </h2>
+    <div id="app"> 
+
+     <father></father>
+    </div>
+    
+<script type="text/javascript"> 
+    let sonComponent = {
+        template:`<h3>I am son component </h3>`
+    }
+    
+    
+    let fatherComponent = {
+        
+        //注意 template中 只能有一个子元素 包裹住其他的子元素  
+        //子组件需要在父组件之前生命 否则会undefined
+        template:
+        `
+        <div>
+            <h3> I am father component!</h3>
+            <son></son>   
+        </div>
+      
+        `,
+        components:{
+            "son":sonComponent
+        }
+    }
+    
+  
+  
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:""
+        },
+       //局部组件是 components 可以有很多个一起注册
+        components:{
+            "father":fatherComponent
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

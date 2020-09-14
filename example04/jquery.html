@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h2> jquery 调用 和外部调用方法</h2>
+    <div id="app">
+         {{message}}
+        
+    </div>
+    
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:"helloworld111"
+        },
+        mounted:function(){
+            $('#app').html("我是jquery方法 ~");
+        },
+        methods:{
+            add:function(){
+                console.log("我是内部方法 我要在外部被调用了 ~")
+            }
+        }
+    })
+    // 外部调用
+    app.add();
+
+</script>
+
+
+
+</body>
+</html>

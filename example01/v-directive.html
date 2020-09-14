@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h2>V-directive 实例</h2>
+    <div id="app">
+        <p v-color="red"> {{num}}</p>
+        <p v-color2="green"> {{num}}</p>
+        <button @click="add">+</button> <br>
+        <button onclick="unbind()">解绑</button>
+    </div>
+
+    <script type="text/javascript">
+        function unbind(){
+            app.$destroy();
+        }
+
+
+        // 指令中不能有大写字母
+        Vue.directive("color", function (el, blinding) {
+            // console.log(el);
+            // console.log(blinding);
+            // expression: "red"
+            // modifiers: {}
+            // name: "color"
+            // rawName: "v-color"
+            // value: "green"
+            el.style = "color:" + blinding.value;
+        })
+
+        Vue.directive("color2", {
+            bind: function (el,blinding) {//被绑定
+                el.style="color:"+blinding.value
+                console.log('1 - bind');
+            },
+            inserted: function () {//绑定到节点
+                console.log('2 - inserted');
+            },
+            update: function () {//组件更新
+                console.log('3 - update');
+            },
+            componentUpdated: function () {//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind: function () {//解绑
+                console.log('5 - unbind');
+            }
+        })
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                num: 10,
+                red: "green",
+                green:"red"
+            },
+            methods: {
+                add: function () {
+                    this.num++;
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

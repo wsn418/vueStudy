@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 3 V-FOR</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app"> 
+        <ul>
+            <li v-for="(number,index) in numbersSort"> {{number }}</li>
+        </ul>
+        <ul>
+            <li v-for="(student,index) in studentsSort">{{student.name}} - {{student.age}}</li>
+        </ul>
+    </div>
+    
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            numbers:[1,2,3,4,5,6],
+            students:[
+                {name:'aab',age:38},
+                {name:'aba',age:20},
+                {name:'bab',age:19},
+                {name:'bba',age:15},
+                {name:'bbb',age:9},
+            ]
+        },
+        computed:{
+            numbersSort:function(){
+                return this.numbers.sort((a,b)=>{return b-a});   //逆序排序
+            },
+            studentsSort:function(){
+                return sortByKey(this.students,'age');
+            }
+        }
+    })
+    function sortByKey(arr , key){
+        return arr.sort((a,b)=>{
+            let x = a[key];
+            let y = b[key];
+            return ((x<y)?-1:((x>y)?1:0));
+            // return y - x 
+        })
+    }
+</script>
+
+
+
+</body>
+</html>

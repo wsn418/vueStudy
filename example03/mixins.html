@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app">
+         {{num}} <br>
+        <button @click="add">add</button>
+    </div>
+    
+<script type="text/javascript"> 
+    // 输出顺序
+    // 我是全局的mixins
+    // 我是外部mixins
+    // 我是内部update
+    let addConsole = {
+        updated:function (){
+            console.log("我是外部mixins")
+        }
+    }
+    Vue.mixin({
+        updated:function(){
+            console.log("我是全局的mixins")
+        }
+    })
+   let app = new Vue({
+        el:"#app",
+        data:{
+            num:0
+        },
+        methods:{
+            add:function(){
+                this.num++;
+            }
+        },
+        updated :function(){
+                console.log("我是内部update");
+            },
+        mixins:[addConsole]
+    })
+
+</script>
+
+
+
+</body>
+</html>

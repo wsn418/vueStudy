@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+    
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app">
+        <div>
+            {{price}}--->{{newPrice}}
+        </div>
+        <ul>
+            <li v-for="item in newsList"> {{item.name}} : {{item.time}} </li>
+        </ul>
+        <ul>
+            <li v-for="item in newTable"> {{item.name}} : {{item.time}} </li>
+        </ul>
+    </div>
+    <script type="text/javascript"> 
+   let tableData=[
+       {name:"111111111111",time: 2020},
+       {name:"222222222222",time: 2020},
+       {name:"333333333333",time: 2020},
+       {name:"444444444444",time: 2020},
+    ]
+   
+    let app = new Vue({
+        el:"#app",
+        data:{
+            price:10,
+            newsList:tableData
+        },
+        computed:{
+            newPrice:function(){
+                return  '¥:'+this.price+'元'
+            },
+            newTable:function(){
+               console.log("11111")
+                //reverse会改变原数组排序
+                return this.newsList.reverse()
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

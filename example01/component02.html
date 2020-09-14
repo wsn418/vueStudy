@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> component </h2>
+    <div id="app"> 
+      <second-test :first="first" from-data="from-data"></second-test> 
+      <!-- 在HTML中统一使用 -命名法 -->
+    </div>
+    
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            first:"I am not first"
+        },
+       //局部组件是 components 可以有很多个一起注册
+        components:{
+        //  在组件中使用小驼峰命名法
+            "secondTest":{
+                template:` <h3>I am  second ! {{first}} {{fromData}}</h3>`,
+                props:["first","fromData"]
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> V-ON </h2>
+    <HR></HR>
+    <div id="app"> 
+        <span v-text="scores"> </span><br>
+        <button v-on:click="add">+</button> <button v-on:click="sub">-</button> <br>
+        <input type="text" v-model="addGap" v-on:keyup.13="addWithGap">
+    </div>
+    
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+           scores:0,
+           addGap:"",
+        },
+        methods:{
+            add:function(){
+                this.scores++;
+            },
+            sub:function(){
+                this.scores--;
+            },
+            addWithGap:function(){
+                // this.scores +=  Number(this.addGap)
+                this.scores += parseInt(this.addGap);      
+                // 数字相加识别成字符串 需要 parseInt/Float 或者Number
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

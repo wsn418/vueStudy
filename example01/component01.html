@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> component </h2>
+    <div id="app"> 
+
+        <first></first>
+        <second></second>
+    </div>
+    
+<script type="text/javascript"> 
+    // 全局注册组件
+    Vue.component('first',{
+        template:`<h3> I am first !（全局组件）</h3>`
+    })
+    // 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:""
+        },
+       //局部组件是 components 可以有很多个一起注册
+        components:{
+            "second":{
+                template:` <h3>I am  second !（局部组件）</h3>`
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

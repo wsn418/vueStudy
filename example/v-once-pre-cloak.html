@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> v-once & v-cloak & v-pre</h2>
+    <div id="app"> 
+        
+        <p v-once>我只被解析一次：{{message}}</p>    
+        <p v-pre> 我不会被解析：{{message}}</p>  
+        <p>我是正常的：{{message}}</p>  
+        <input type="text" v-model="message">
+        <p v-cloak>我会在最后渲染</p>
+    </div>
+    
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:"helloworld111"
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

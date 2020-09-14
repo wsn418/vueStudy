@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app"> 
+        <!-- v-text比{{}}渲染要好 避免页面刷新而导致未渲染数据直接暴露 -->
+        <span>{{message}}</span> = <span v-text="message"></span>
+        <!-- 尽量不用v-html会导致黑客攻击 -->
+        <span>{{htmlMessage}}</span> != <span v-html="htmlMessage"></span> 
+    </div>
+   <script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:"helloworld111",
+            htmlMessage:"<h2>Hello World</h2>"
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

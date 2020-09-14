@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> slot </h2>
+    <div id="app">
+        <!-- 用slot传值 -->
+       <sunan>
+           <span slot="name">{{myData.name}} </span>
+           <span slot="skill">{{myData.skill}} </span>
+           <span slot="age">{{myData.age}} </span>
+       </sunan>
+        
+    </div>
+    
+    
+    <template id="temp">
+        <!-- 用slot接收值 -->
+        <div>
+            <p>name:<slot name="name"></slot></p>
+            <p>skill:<slot name="skill"></slot></p>
+            <p>age:<slot name="age"></slot></p>
+        </div>
+    </template>    
+
+
+
+
+<script type="text/javascript"> 
+   
+//    用template绑定模板
+    let temp = {
+        template:'#temp'
+    }
+    
+    
+    let app = new Vue({
+        el:"#app",
+        data:{
+             myData:{
+                 name:"wang",
+                 skill:"web",
+                 age:20
+             }
+        },
+        components:{
+            "sunan":temp
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

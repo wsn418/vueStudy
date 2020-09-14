@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> $mount & $destroy & $forceUpdate & $nextTick </h2>
+    <div id="app">
+       
+    </div>
+    
+    <button onclick="destroy()"> 销毁 </button>
+    <button onclick="reload()">更新</button>
+    <button onclick="tick()">nextTick</button>
+    <button onclick="add()"> ADD</button>
+<script type="text/javascript"> 
+    let extend = Vue.extend({
+        template:`<div> name is wang {{name}} ---{{age}}</div>`,
+        data:function(){
+            return{
+                name:"sunan",
+                age:20
+            }
+        },
+        destroyed:function(){
+            console.log("我被摧毁了 ")
+        },
+        mounted:function(){
+            console.log("我加载完成了")
+        },
+        updated:function(){
+            console.log("我正在更新")
+        }
+    })
+    // $mount 挂载函数
+    let vm = new extend().$mount("#app");
+    //想要使用方法必须用挂载函数返回的对象才能使用 vm 行 extend不行 
+    function destroy(){
+        console.log("11")
+         vm.$destroy();
+    }
+    function reload(){
+        vm.$forceUpdate()
+    }
+    function tick(){
+        vm.name = "sunaner";
+    }
+    function add(){
+        vm.age++;
+    }
+    // 不知道为何不会像钩子函数一样自动调用？
+    vm.$nextTick(function(){
+            console.log("属性更新~tick")
+        })
+</script>
+
+
+
+</body>
+</html>

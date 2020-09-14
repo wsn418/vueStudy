@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app">
+        <div>{{num}}</div>
+        <button @click="add(2,$event)">add</button><br>
+        <!-- 组件add用@click.native才能调用到app原生的方法 -->
+        <btn @click.native="add(2,$event)"></btn>
+     </div>
+       <!-- 外部add通过app.methods来调用 -->
+        <button onclick="app.add(2)">外部add </button>
+<script type="text/javascript"> 
+    let btn = {
+        template:`<button>  组件add </button>`
+    }
+    let app = new Vue({
+        el:"#app",
+        data:{
+           num:0
+        },
+        components:{
+            "btn":btn
+        }
+        ,
+        methods:{
+            add:function(num,event){
+               if(num!=null && num != '')
+                this.num+=num
+                console.log(event);
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

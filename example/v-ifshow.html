@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if & v-show</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2>V-IF & V-SHOW</h2>
+    <div id="app">
+        <div v-if="isLogin"> TI'S ME I AM HERE ! ! !</div>
+        <div v-else> aaaa </div>
+        <div v-show="isLogin">bbbbbbb</div>
+        <!-- v-if 不加载DOM节点 节省服务器资源 -->
+        <!-- v-show 加载DOM节点 提高页面流畅度 -->
+    </div>
+
+    <script type="text/javascript">
+        let app = new Vue({
+            el:"#app",
+            data:{
+                isLogin:true,
+            }
+        });
+    </script>
+</body>
+
+</html>

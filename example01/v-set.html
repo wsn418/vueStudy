@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> Vue set </h2>
+    <div id="app"> 
+        {{num}}
+        <ul>
+            <li v-for="num in numList">{{num}}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">+++</button></p>
+   
+<script type="text/javascript"> 
+     let outData = {
+         num:1,
+         numList:[1,2,3,4,5]
+     }
+     function add(){
+        //  app.num++;
+        //  Vue.set(app,"num",2)
+        //  "test".spilce(0,0);
+        // app.num++;
+        // 直接改不会更新
+        // app.numList[2]=5;
+        // console.log(app.numList);
+        // 通过vue.set更新会更新数组信息
+        Vue.set(app.numList,2,999)
+     }
+    let app = new Vue({
+        el:"#app",
+        data:outData
+    })
+
+</script>
+
+
+
+</body>
+</html>

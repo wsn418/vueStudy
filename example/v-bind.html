@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-bind 实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>v-bind 实例</h2> <hr>
+        <h3>v-bind和数据绑定</h3>
+        <p><img v-bind:src="imgUrl" alt="" width="200px"></p>
+        <p><a :href="url" target="_blank" rel="noopener noreferrer"> 百度一下 </a></p><hr>
+        <h3>v-bind和CSS</h3>
+        <p :class="className">1:绑定CSS</p>
+        <!-- 绑定的是style中的类名，绑定data中的数据不解析 -->
+        <p :class="{classA:isOk}">2:绑定class中的判断</p>
+        <p :class="[class1,class2]">3:绑定CSS中的数组</p>
+        <p :class="isOk?class1:class2"> 4:绑定三元运算符</p>
+        <p>
+            <input type="checkbox" id="checkClass" v-model="isOk">
+            <label for="checkClass">CSS选择</label>
+        </p>
+        <hr>
+        <h3>绑定style</h3>
+        <p :style="{color:red,fontSize:green}"> 5.绑定style </p>
+        <p :style="styleObject">6.绑定styleObject</p>
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el:"#app",
+            data:{
+                imgUrl:"https://www.baidu.com/img/bd_logo1.png",
+                url:"https://www.baidu.com",
+                className:"classA",
+                class1:"classA",
+                class2:"classB",
+                isOk:true,
+                red:"green",
+                green:"20px",
+                styleObject:{
+                    color:"gray",
+                    // 在vue里面必须用驼峰 font-size不被允许
+                    fontSize:"40px"
+                }
+            }
+        })
+    </script>
+    <style>
+        .classA{
+            color:red;
+        }
+        .classB{
+            font-size: 20px;
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> extends & delimiters</h2>
+    <div id="app">
+         ${num} <br>
+        <button @click="add">add</button>
+    </div>
+    
+<script type="text/javascript"> 
+   
+   let addConsole = {
+       updated:function(){
+           console.log("我是外部extends update") 
+        },
+        methods:{
+             //如果原生中有则首先使用原生的
+            add:function(){
+                this.num+=2;
+            }
+        },
+        data:function(){
+            return{
+                num:4  //如果原生中有则首先使用原生的
+            }
+        }
+   }
+  
+   let app = new Vue({
+        el:"#app",
+        data:{
+            num:0
+        },
+        methods:{
+            add:function(){
+                this.num++;
+            }
+        },
+        updated :function(){
+                console.log("我是内部update");
+        },
+        // 扩展只能放一个对象而mixins可以放数组进去
+        extends:addConsole,
+        //重定义插值形式   默认{{}}    
+        delimiters:['${','}']
+       
+    })
+
+</script>
+
+
+
+</body>
+</html>

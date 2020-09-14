@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <h2>propData</h2>
+        <header></header>
+
+    </div>
+    <script type="text/javascript">
+    let header = Vue.extend({
+        template:`<h3>{{name}}+{{a}}</h3>`, 
+        // 注意 这里的data需要用function(){retun{}} 来定义数据
+        data:function(){
+            return{ 
+            name:"name is panda"
+            }
+        },
+        // 注意是props来接收数据
+        props:['a']
+
+    })
+    // new header() ...来注册拓展  {propsData:{a:15}} 来传递数据
+    new header({propsData:{a:15}}).$mount('header');
+
+    </script>
+</body>
+</html>

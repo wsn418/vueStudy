@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> $on & $once & $off & $emit </h2>
+    <div id="app">
+        <p>{{num}}</p>
+        <!-- <button @click="add">add</button>
+        <button @click="sub">sub</button> -->
+    </div>
+    <button onclick="add()">add</button>
+    <button onclick="sub()">sub</button>
+    <button onclick="addOnce()">addOnce</button>
+    <button onclick="off()">销毁add</button>
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+            num:0
+        },
+        destroyed:function(){
+            console.log("销毁")
+        }
+    })
+    app.$on('add',function(){
+        this.num++;
+    })
+    app.$on('sub',function(){
+        this.num--;
+    })
+    function add(){
+        app.$emit('add');
+    }
+    function sub(){
+        app.$emit('sub');
+    }
+    // 只加一次
+    app.$once('addOnce',function(){
+        this.num++
+    })
+    function addOnce(){
+        app.$emit('addOnce')
+    }
+
+    function off(){
+        app.$off('add');
+    }
+
+</script>
+
+
+
+</body>

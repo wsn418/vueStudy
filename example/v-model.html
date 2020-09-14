@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h2> v-model </h2>
+    <div id="app">
+        <p> 文本 ：{{message}}</p>
+        
+        <H4>v-model 修饰符</H4> <hr>
+        <span>.lazy <input type="text" v-model.lazy="message"></span> <br>
+        <span>.number <input type="text" v-model.number="message"></span> <br>
+        <span>.tirm <input type="text" v-model.trim="message"></span> <br>
+        <H4>v-model 文本区域数据绑定</H4> <hr>
+        <textarea name="" id="" cols="30" rows="5" v-model="message"></textarea>
+        <H4>v-model 选择框</H4> <hr>
+        <input type="checkbox" id="isTrue" v-model="isTrue">
+        <label for="isTrue">{{isTrue}}</label>
+        <h4>v-model 多选绑定一个数组</h4> <hr>
+        <p>
+            <input type="checkbox" id="check1" value="check" v-model="checkNum">
+            <label for="check1"> check1</label>
+            <input type="checkbox" id="check2" value="check2" v-model="checkNum">
+            <label for="check2"> check2</label>
+            <input type="checkbox" id="check3" value="check3" v-model="checkNum">
+            <label for="check3"> check3</label>
+            <P>{{checkNum}}</P>
+            <!-- 前提是checkNum绑定是是一个数组 -->
+            <input type="checkbox" id="JSPang" value="JSPang" v-model="web_Names">
+            <label for="JSPang">JSPang</label><br/>
+            <input type="checkbox" id="Panda" value="Panda" v-model="web_Names">
+            <label for="JSPang">Panda</label><br/>
+            <input type="checkbox" id="PanPan" value="PanPan" v-model="web_Names">
+            <label for="JSPang">PanPan</label>
+            <p>{{web_Names}}</p>
+        </p>
+        <h4>v-model 单选绑定一个值</h4> <hr>
+        <p>
+            <input type="radio" id="man" value="男" v-model="sex">
+            <label for="man">男</label>
+            <input type="radio" id="girl" value="女" v-model="sex">
+            <label for="girl">女</label>
+            <p>{{sex}}</p>
+        </p>
+
+
+    </div>
+
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "say someting",
+                isTrue:true,
+                checkNum:[],
+                web_Names:[],
+                sex:""
+            }
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>

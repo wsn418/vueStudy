@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app">
+        <p>气温{{temp}}° 我们应该穿{{clothes}}</p>
+        <p>
+            <button @click="addTemp">增加温度</button>
+            <button @click="subTemp">减少温度</button>
+        </p>
+        
+    </div>
+    
+<script type="text/javascript"> 
+    
+    let clothes = ["T恤","毛衣","外套"];
+    let app = new Vue({
+        el:"#app",
+        data:{
+            temp:26,
+            clothes:clothes[0]
+        },
+        methods:{
+            addTemp:function(){
+                this.temp+=5;
+            },
+            subTemp:function(){
+                this.temp-=5;
+            }
+        },
+        watch:{
+            temp:function(newVal,oldVal){
+            //    oldVal 是数据上一次改变前的值
+            //    newVal 是数据这次改变的值
+               console.log(oldVal);
+                if(newVal>=25){
+                    this.clothes = clothes[0]
+                }else if(newVal>=15){
+                    this.clothes = clothes[1]
+                }else{
+                    this.clothes =clothes[2]
+                }
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html>

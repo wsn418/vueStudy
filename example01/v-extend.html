@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app"> 
+        <h2>v-extend 实例</h2>
+       
+        <!-- 自定义模板标签 -->
+        <span>自定义模板标签</span><tobaidu></tobaidu>
+        <!-- 自定义id绑定 -->
+        <span>自定义id绑定</span><div id="tobaidu"></div>
+      
+    </div>
+    
+<script type="text/javascript"> 
+   let tobaidu = Vue.extend({
+       template:"<p> <a :href='url' >{{urlName}}</a></p>",
+       data:function(){
+           return{
+                urlName:"baidu",
+                url:"https://www.baidu.com"
+           }
+           
+       }
+   })
+
+    new tobaidu().$mount("tobaidu");
+    new tobaidu().$mount("#tobaidu")
+
+</script>
+
+
+</body>
+</html>

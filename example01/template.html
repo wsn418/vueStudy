@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example 1 hello world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2> HELLO WORLD</h2>
+    <div id="app"> 
+
+    </div>
+    <template id="tplt2"> 
+        <h2>我是外部模板</h2>
+    </template>
+
+    <script type="x-template" id="tplt3">
+        <h2> 我是script 模板 </h2>
+    </script>
+
+<script type="text/javascript"> 
+    let app = new Vue({
+        el:"#app",
+        data:{
+          
+        },
+        // template:` <h2>我是内部模板</h2>`
+        // template:"#tplt2"
+        template:"#tplt3"
+    })
+
+</script>
+
+
+
+</body>
+</html>
